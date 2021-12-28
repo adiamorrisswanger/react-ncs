@@ -7,7 +7,11 @@ function About(props) {
 
     const partners = props.partners.map(partner => {
         return (
-            <h5>{partner.name}</h5>
+            <div>
+            <Media tag="li" key={partner.id}>
+                 <RenderPartner partner={partner} />
+             </Media>
+            </div>
         );
     });
 
@@ -71,6 +75,23 @@ function About(props) {
             </div>
         </div>
     );
+}
+
+function RenderPartner({partner}) {
+    if(partner) {
+        return (
+            <>
+                <Media object src={partner.image} alt={partner.name} width="150" />
+                <Media body className="ml-5 mb-4">
+                    <Media heading>
+                        {partner.name}
+                    </Media>
+                    {partner.description}
+                </Media>
+            </>
+        );
+    }
+    return <div />
 }
 
 export default About;
