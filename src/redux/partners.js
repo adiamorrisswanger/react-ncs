@@ -1,4 +1,4 @@
-import { actionTypes } from 'react-redux-form';
+import * as ActionTypes from './ActionTypes';
 
 export const Partners = (state = {
         isLoading: true,
@@ -6,11 +6,11 @@ export const Partners = (state = {
         partners: []
 }, action) => {
     switch (action.type) {
-        case actionTypes.ADD_PARTNERS:
+        case ActionTypes.ADD_PARTNERS:
             return {...state, isLoading: false, errMess: null, partners: action.payload};
-        case actionTypes.PARTNERS_LOADING:
+        case ActionTypes.PARTNERS_LOADING:
             return {...state, isLoading: true, errMess: null, partners: []};
-        case actionTypes.PARTNERS_FAILED:
+        case ActionTypes.PARTNERS_FAILED:
             return {...state, isLoading: false, errMess: action.payload};
         
         default:

@@ -7,7 +7,7 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { postComment, fetchCampsites, fetchComments, fetchPromotions, fetchPartners, postFeedback } from '../redux/ActionCreators';
+import { postComment, fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition} from 'react-transition-group';
@@ -32,7 +32,6 @@ const mapDispatchToProps = {
   fetchComments: () => (fetchComments()),
   fetchPromotions: () => (fetchPromotions()),
   fetchPartners: () => (fetchPartners()),
-  postFeedback: (firstName, lastName, phoneNum, email, agree, feedback) => (postFeedback(firstName, lastName, phoneNum, email, agree, feedback))
 };
 
 class Main extends Component {
@@ -84,7 +83,7 @@ class Main extends Component {
                         <Route exact path='/directory' render={() => <Directory campsites={this.props.campsites} />
                         } />
                         <Route path='/directory/:campsiteId' component={CampsiteWithId} /> 
-                        <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
+                        <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
                         <Route exact path='/aboutus' render={() => <About partners={this.props.partners} /> } />
                         <Redirect to='/home' /> 
                         
