@@ -80,7 +80,7 @@ class CommentForm extends Component {
                         <div className="form-group">
                             <Row>
                                 <Label htmlFor="comment" md={2}>Comment</Label>
-                                <Control.textarea model=".comment" id="comment" name="comment" 
+                                <Control.textarea model=".text" id="comment" name="comment" 
                                 placeholder="Comment"
                                 className="form-control"
                                 />
