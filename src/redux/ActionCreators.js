@@ -186,3 +186,41 @@ export const addPartners = partners => ({
     payload: partners
 });
 
+export const postFeedback = (feedback) => () => {
+    /* const newFeedback = {
+        firstName: firstName, 
+        lastName: lastName,
+        phoneNum: phoneNum, 
+        email: email, 
+        agree: agree,
+        contatType: contactType, 
+        feedback: feedback
+    }; */
+    //newFeedback.date = new Date().toISOString();
+    console.log('Testing' + JSON.stringify(feedback));
+
+    return fetch(baseUrl + 'feedback', {
+        method: "POST",
+        body: JSON.stringify(feedback),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        } else {
+            const error = new Error(`Error ${response.status}: ${response.statusText}`);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => { throw error; }
+    )
+    .then(response => response.json())
+    .then(response => alert('Thank you for your feedback!' + JSON.stringify(response)))
+    .catch(error => {
+        console.log('post feedback', error.message);
+        alert('Your feedback could not be posted\nError: ' + error.message);
+    });
+};

@@ -24,7 +24,7 @@ function PartnersList(props) {
                 <h4>{props.partners.errMess}</h4>
             </div>
         );
-    } else {
+    } 
         return (
             <div className="col mt-4">
                 <Media list>
@@ -32,7 +32,7 @@ function PartnersList(props) {
                 </Media>
             </div>
         )
-    }
+    
     
     
     

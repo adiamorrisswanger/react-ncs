@@ -33,8 +33,8 @@ class Contact extends Component {
     }
 
 
-    handleSubmit() {
-        alert('Thanks for your feedback!')
+    handleSubmit(values) {
+        this.props.postFeedback(values);
         this.props.resetFeedbackForm();
     }
 
@@ -198,7 +198,7 @@ class Contact extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="feedback" md={2}>Your Feedback</Label>
                                 <Col md={10}>
-                                    <Control.textarea model="form-control" id="feedback" name="feedback"
+                                    <Control.textarea model=".feedback" id="feedback" name="feedback"
                                         rows="12"
                                         className="form-control"
                                     />
